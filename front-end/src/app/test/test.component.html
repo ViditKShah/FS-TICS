@@ -1,0 +1,135 @@
+<div class="container" style="margin-top: 30px; margin-bottom: 30px;">
+	<div class="row">
+		<div class="col-md-12 bread-div">
+			<p>
+				<a [routerLink]="['/dashboard']" class="my-breadcrumbs">Home</a> 
+				/  
+				<a [routerLink]="['/test']" class="my-breadcrumbs-active">Tests</a>
+			</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+
+
+	<tabset>
+    	<tab heading="View Test" id="tab1">
+    		
+    		<div class="row" style="margin-top: 40px;">
+    			<div class="col-md-12">
+    				<table class="table">
+    					<thead>
+      						<tr>
+        						<th>Index</th>
+        						<th>Designation</th>
+        						<th>Skills</th>
+        						<th>Action</th>
+      						</tr>
+    					</thead>
+    					<tbody>
+      						<tr *ngFor="let test of allTests; let i = index">
+        						<td>{{i+1}}</td>
+        						<td>{{test.designation}}</td>
+        						<td>{{test.skills}}</td>
+        						<td><button class="btn btn-danger" (click)="deleteTest(test)">Delete</button></td>
+      						</tr>
+      					</tbody>
+      				</table>		
+    			</div>
+    		</div>
+    	</tab>
+    	<tab heading="Add a Test" id="tab2">
+    		
+			<div class="row" style="margin-top: 40px;">
+				<div class="col-md-4">
+					<input type="text" name="recruiter_id" class="form-control" placeholder="Enter recruiter ID" 
+						[(ngModel)]="this.newTest.recruiter_id" [ngModelOptions]="{standalone: true}">
+				</div>
+				<div class="col-md-4">
+					<input type="text" name="designation" class="form-control" placeholder="e.g Developer, Senior Developer, etc."
+						[(ngModel)]="this.newTest.designation" [ngModelOptions]="{standalone: true}">
+				</div>
+				<div class="col-md-4">
+					<div *ngFor="let skill of skills_input; let i = index">
+						<input type="text" class="form-control new-ques-fields" name="skills" id="skills{{i}}"  placeholder="Skills e.g java, .net">
+					</div>
+					<!-- Add or Remove options -->
+					<div class="btn-group new-ques-fields" style="float: right">
+						<button class="btn btn-info" (click)="addSkills()">+</button>
+						<button class="btn btn-info" (click)="removeSkills()">-</button>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-md-12">
+					<p>Select Questions</p>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-4">
+					<p>General</p>
+				<div>
+					<div class="checkbox" *ngFor="let question of generalQues; let i = index">
+  						<label><input type="checkbox" id="myQues{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="$event.target.checked? logGeneralQuestions(question._id) : false">{{question.question_name}}</label>
+  						<pre>{{log}}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<p>Psychometric</p>
+				<div>
+					<div class="checkbox" *ngFor="let question of psychQues">
+  						<label><input type="checkbox" id="myQues2{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="$event.target.checked? logPsychQuestions(question._id) : false">{{question.question_name}}</label>
+
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<p>Add a new question</p>
+				<!-- Name -->
+				<input type="text" name="quesName" class="form-control new-ques-fields" placeholder="Type a new question name" [(ngModel)]="this.newQues.question_name" [ngModelOptions]="{standalone: true}"  />
+				<!-- Type -->
+				<input type="text" name="quesType" class="form-control new-ques-fields" placeholder="Single/Multiple" [(ngModel)]="this.newQues.question_type" [ngModelOptions]="{standalone: true}"  />
+				<!-- Add or Remove options -->
+				<div class="btn-group new-ques-fields">
+					<button class="btn btn-info" (click)="addAnswers()">+</button>
+					<button class="btn btn-info" (click)="removeAnswers()">-</button>
+				</div>
+				<!-- Options -->
+				<div *ngFor="let item of answer_input; let i = index">
+					<input type="text" class="form-control answer-options new-ques-fields" id="options{{i}}" placeholder="Option e.g yes, no" /> 
+				</div>
+				<!-- Correct Answer -->
+				<input type="text" name="correctAns" class="form-control new-ques-fields" placeholder="Correct Answer" [(ngModel)]="this.newQues.correct_answer" [ngModelOptions]="{standalone: true}" />
+				
+				<!-- Category -->
+				<div class="form-group">
+    				<select class="form-control" style="width: 100%; margin-bottom: 20px;"
+    				id="selectTest" name="selectTest" [(ngModel)]="this.newQues.question_category">
+    					<option [selected]>
+    						Select category
+    					</option>
+        				<option>
+        					general
+        				</option>
+        				<option>
+        					psychometric
+        				</option>
+    				</select>
+			</div>
+
+				<!-- Insert Button -->
+				<input type="submit" class="btn btn-warning new-ques-fields" style="width: 30%"  name="insertButton" (click)="insertQuestion()"  value="Insert" />
+				</div>
+			</div>
+			<hr style="margin: 30px 0;">
+			<div class="row" style="margin-bottom: 50px;">
+				<div class="col-md-12">
+					<button class="btn btn-primary create-test-btn" (click)="createTest()">Create</button>
+				</div>
+			</div>
+    	</tab>
+    </tabset>	
+
+</div>

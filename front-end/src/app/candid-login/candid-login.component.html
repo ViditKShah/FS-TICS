@@ -1,0 +1,67 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-10" style="margin-top: 10%; margin-left: 7%; margin-right: 7%;">
+			<div class="row">
+				<div class="col-sm-4" style="background-color: grey;">
+					<h3 class="welcome-heading">Welcome!</h3>
+					<p class="sub-heading">TEK Intelligent Candidate Screening </p>
+				</div>
+				<div class="col-sm-8" style="background-color: #eaeaea;">
+				<p style="font-style: italic; margin-top: 6%; color: grey; font-size: 11px; margin-bottom: 6%">Please fill in your details to get started.</p>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+  							<label for="usr" class="input-labels">Full Name</label>
+  							<input type="text"  [(ngModel)]="newCandidate.candid_name" class="form-control" id="usr" name="usr">
+						</div>
+						<div class="form-group">
+  							<label for="contact" class="input-labels">Contact No</label>
+  							<input type="tel" maxlength="10" [(ngModel)]="newCandidate.candid_phone" class="form-control" id="contact" name="contact">
+						</div>
+						<div class="form-group">
+  							<label for="exp" class="input-labels">No. of Experience</label>
+  							<input type="number" min="0" [(ngModel)]="newCandidate.no_of_exp" class="form-control" id="exp" placeholder="In years" name="exp">
+						</div>
+						<div class="form-group">
+  							<label for="gender" class="input-labels">Gender</label>
+  							<select class="form-control" name="selectGender" id="selectedGender" 
+  							[(ngModel)]="selectedGender">
+  								<option *ngFor="let gender of genders">
+  									{{gender}}
+  								</option>
+  							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+  							<label for="email" class="input-labels">Email</label>
+  							<input type="text" [(ngModel)]="newCandidate.candid_email" class="form-control" id="email" name="email">
+						</div>
+						<div class="form-group">
+  							<label for="alt" class="input-labels">Alternate No</label>
+  							<input type="tel" maxlength="10" [(ngModel)]="newCandidate.candid_phone2" class="form-control" id="alt"
+  							name="alt">
+						</div>
+						<div class="form-group">
+  							<label for="dob" class="input-labels">Date of Birth</label>
+  							<input type="date" [(ngModel)]="newCandidate.dob" class="form-control" id="dob" name="dob">
+						</div>
+						<div class="form-group">
+  							<label for="loc" class="input-labels">Preferred Location</label>
+  							<select class="form-control" name="selectLocation" id="selectLocation" 
+  							[(ngModel)]="selectedLocation">
+  								<option *ngFor="let location of locations">
+  									{{location}}
+  								</option>
+  							</select>
+						</div>
+					</div>
+				</div>
+				<button class="btn btn-primary proceed" (click)="insertCandidate()">
+				Proceed</button>
+				
+			</div>
+		</div>
+	</div>
+</div>
