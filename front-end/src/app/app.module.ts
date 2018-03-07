@@ -19,6 +19,7 @@ import { SubmitTestComponent } from './submit-test/submit-test.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CandidLoginComponent } from './candid-login/candid-login.component';
 import { InstructionsComponent } from './instructions/instructions.component';
+import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
 
 const appRoutes: Routes = [
   {
@@ -31,11 +32,11 @@ const appRoutes: Routes = [
     component: QuestionsComponent,
     data: { title: 'Add or View Questions' }
   },
-  // {
-  //   path: 'submitTest',
-  //   component: SubmitTestComponent,
-  //   data: { title: 'Submit Test' }
-  // },
+  {
+    path: 'login',
+    component: RecruiterLoginComponent,
+    data: { title: 'Login' }
+  },
   {
     path: 'thanks',
     component: ThankYouComponent,
@@ -62,7 +63,7 @@ const appRoutes: Routes = [
     data: { title: 'Submit Test' }
   },
   { path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/login',
     pathMatch: 'full'
   }
 
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     SubmitTestComponent,
     ThankYouComponent,
     CandidLoginComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    RecruiterLoginComponent
   ],
   imports: [
     BrowserModule,
