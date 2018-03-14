@@ -4,7 +4,42 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cors = require('cors')
+var cors = require('cors');
+var passport = require('passport')
+var LdapStrategy = require('passport-ldapauth');
+// var sys       = require('sys'),
+//     ldapauth  = require('./ldapauth'); // Path to ldapauth.node
+
+// var cred = 'Mummy@007';
+// var scheme    = 'ldap',
+//     ldap_host = 'ldap://172.27.146.12',
+//     ldap_port = 636,
+//     username  = 'shingal',
+//     password  = 'Mummy@007'
+//     base      = "OU=USERS,DC=ALLEGISGROUP,DC=com",
+//     filter    = "(&(objectclass=user)(sAMAccountName=someone))";
+
+// ldapauth.search(ldap_host, ldap_port, username, password, base, filter,
+//   function(err, result) {
+//     if (err) {
+//       sys.puts(err);
+//     } else {
+//       sys.puts('Search: ' + JSON.stringify(result));
+//     }
+//   });
+
+// ldapauth.authenticate(scheme, ldap_host, ldap_port, username, password,
+//   function(err, result) {
+//     if (err) {
+//       sys.puts(err);
+//     } else {
+//       sys.puts('Auth: ' + result);
+//     }
+//   });
+
+
+
+
 
 var index = require('./routes/index');
 
@@ -18,7 +53,6 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-
 
 // For CORS
 var originsWhitelist = [
@@ -39,9 +73,6 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-
 
 app.use('/', index);
 

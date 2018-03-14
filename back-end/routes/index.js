@@ -5,7 +5,11 @@ var Submit = require('../models/submissions');
 var Scores = require('../models/scores');
 var router = express.Router();
 var mongoose = require('mongoose');
+// var LdapStrategy = require('passport-ldapauth');
 // var uniqueValidator = require('mongoose-unique-validator');
+
+
+//LDAP
 
 
 /* GET all questions page. */
