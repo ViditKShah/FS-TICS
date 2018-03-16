@@ -11,10 +11,8 @@ var scoreSchema = new Schema({
     versionKey: false // To not generate __v key
 });
 
-
 // scoreSchema.plugin(uniqueValidator);
 // Create a model.
 var Scores = mongoose.model('score', scoreSchema);
-
 
 module.exports = Scores;

@@ -33,41 +33,41 @@ export class QuestionsComponent implements OnInit {
     .subscribe(
       data => {
         this.all_ques.splice(this.all_ques.indexOf(question), 1);
-        console.log("Question deleted!");
+        console.log('Question deleted!');
       })
   
   }
 
   // Display all the questions
-  getQuestions(){
-    this.dataService.getQuestions(this.searchCriteria, "fromSimpleTest")
+  getQuestions() {
+    this.dataService.getQuestions(this.searchCriteria, 'fromSimpleTest')
     .subscribe(
       data => {
          this.all_ques = [];
          data.forEach(
            element => {
-             var newQues = new Questions(element._id, 
-                                element.question_name, 
+             const newQues = new Questions(element._id,
+                                element.question_name,
                                 element.answers,
                                 element.correct_answer,
                                 element.question_type,
                                 element.question_category);
              this.all_ques.push(newQues);
-           })
-      });  
+           });
+      });
     }
 
   // Insert a new question
   insertQuestion(){
 
-    if (this.newQues.question_name == "" || this.newQues.question_type == "" || this.newQues.question_category == ""
-      || this.newQues.answers == null || this.newQues.correct_answer == "") {
-      console.log("Please fill all the details.");
+    if (this.newQues.question_name == '' || this.newQues.question_type == '' || this.newQues.question_category == ''
+      || this.newQues.answers == null || this.newQues.correct_answer == '') {
+      console.log('Please fill all the details.');
     }
 
   	// For inserting answer options array
   	for (var i = 0; i < this.answer_input.length; i++) {
-  		var elemID = "options" + i;
+  		var elemID = 'options' + i;
   		var newItem = (<HTMLInputElement>document.getElementById(elemID)).value;
   		this.answers.push(newItem);
   		console.log(newItem);
@@ -80,8 +80,8 @@ export class QuestionsComponent implements OnInit {
          this.newQues._id = data.id;
          this.all_ques.push(this.newQues);
          this.newQues = Questions.CreateDefault();
-         this.answers = ["",""];
-         console.log("Added question.");
+         this.answers = ['',''];
+         console.log('Added question.');
       }
     )
   }
@@ -92,7 +92,7 @@ export class QuestionsComponent implements OnInit {
 
   // For adding answer fields
   addAnswers(){
-  	this.answer_input.push("a");
+  	this.answer_input.push('a');
   	console.log(this.answers);
   }
 

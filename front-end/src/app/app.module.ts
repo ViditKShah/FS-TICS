@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
@@ -48,6 +48,11 @@ const appRoutes: Routes = [
     data: { title: 'Review' }
   },
   {
+    path: 'dashboard/:name',
+    component: DashboardComponent,
+    data: { title: 'Dashboard' }
+  },
+  {
     path: 'dashboard',
     component: DashboardComponent,
     data: { title: 'Dashboard' }
@@ -87,6 +92,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     TabsModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
@@ -94,7 +100,7 @@ const appRoutes: Routes = [
     )
   ],
   providers: [
-    {provide: BrowserXhr, useClass:Cors}, // <--------- For Cross Origin Access
+    {provide: BrowserXhr, useClass: Cors}, // <--------- For Cross Origin Access
     DataService,    // <----- Data Service
     CandidDataService
   ],

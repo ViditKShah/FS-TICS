@@ -14,9 +14,14 @@
       <a class="nav-link" [routerLink]="['/questions']">Questions</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link"  [routerLink]="['/review']">Review</a>
+      <a class="nav-link" [routerLink]="['/review']">Review</a>
     </li>
+    <li class="nav-item" style="position:fixed;right:5%">
+      <span class="nav-link">Welcome {{recruiterName}}</span>
+    </li>
+    <li class="nav-item" style="position:fixed;right:1%; cursor:pointer;" (click) = logOut()><span class="nav-link">Logout</span></li>
   </ul>
 </nav>
+
 
 

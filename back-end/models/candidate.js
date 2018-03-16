@@ -21,5 +21,4 @@ var candidateSchema = new Schema({
 // Create a model.
 var Candidate = mongoose.model('candidate', candidateSchema);
 
-
 module.exports = Candidate;

@@ -15,5 +15,4 @@ var questionsSchema = new Schema({
 // Create a model.
 var Questions = mongoose.model('Questions', questionsSchema);
 
-
 module.exports = Questions;
