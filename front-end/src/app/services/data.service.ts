@@ -29,7 +29,7 @@ export class DataService {
         }
 
 
-        return this.http.get('http://localhost:3002', { search: params })
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3002', { search: params })
                 .map((res: any) => {
                     return res.json();
                 })
@@ -43,7 +43,7 @@ export class DataService {
         const params: URLSearchParams = new URLSearchParams();
         params.set('question_category', searchCriteria);
 
-        return this.http.get('http://localhost:3002', { search: params })
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3002', { search: params })
                 .map((res: any) => {
                     return res.json();
                 })
@@ -58,7 +58,7 @@ export class DataService {
         const params: URLSearchParams = new URLSearchParams();
         params.set('test_id', searchCriteria);
 
-        return this.http.get('http://localhost:3002/getCandidates', { search: params }).map((res: any) => {
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3002/getCandidates', { search: params }).map((res: any) => {
             return res.json();
         }).catch((error: any) => {
             return Observable.throw(error.json ? error.json().error : error || 'Server error');
@@ -70,7 +70,7 @@ export class DataService {
         const params: URLSearchParams = new URLSearchParams();
         params.set('candid_id', searchCriteria);
 
-        return this.http.get('http://localhost:3002/getCandidData', { search: params }).map((res: any) => {
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3002/getCandidData', { search: params }).map((res: any) => {
             return res.json();
         }).catch((error: any) => {
             return Observable.throw(error.json ? error.json().error : error || 'Server error');
@@ -80,7 +80,7 @@ export class DataService {
 
     // submit a new score
     submitNewScore(score: Scores): Observable<any> {
-        return this.http.post('http://localhost:3002/submitScore', score)
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3002/submitScore', score)
             .map((res: any) => {
                 return res.json();
             })
@@ -91,7 +91,7 @@ export class DataService {
 
     // insert a new Questions
     insertNewQuestion(ques: Questions): Observable<any> {
-        return this.http.post('http://localhost:3002/insertQues', ques)
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3002/insertQues', ques)
             .map((res: any) => {
                 return res.json();
             })
@@ -102,7 +102,7 @@ export class DataService {
 
     // create a new Test
     createNewTest(test: Test): Observable<any> {
-        return this.http.post('http://localhost:3002/createTest', test)
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3002/createTest', test)
             .map((res: any) => {
                 return res.json();
             })
@@ -113,7 +113,7 @@ export class DataService {
 
     // submit a new answer
     submitAllAnswer(submit: Submissions): Observable<any> {
-        return this.http.post('http://localhost:3002/submitAnswer', submit)
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3002/submitAnswer', submit)
             .map((res: any) => {
                 return res.json();
             })
@@ -132,7 +132,7 @@ export class DataService {
             params.set('_id', searchCriteria);
         }
 
-        return this.http.get('http://localhost:3002/getTests', { search: params })
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3002/getTests', { search: params })
                 .map((res: any) => {
                     return res.json();
                 })
@@ -143,7 +143,7 @@ export class DataService {
 
     // Delete a ques
     deleteQues(ques: Questions): Observable<any> {
-        return this.http.post('http://localhost:3002/deleteQues', { id: ques._id })
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3002/deleteQues', { id: ques._id })
         .map((res: any) => {
             return res.json();
         })
@@ -154,7 +154,7 @@ export class DataService {
 
     // Delete a test
     deleteTest(test: Test): Observable<any> {
-        return this.http.post('http://localhost:3002/deleteTest', { id: test._id })
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3002/deleteTest', { id: test._id })
         .map((res: any) => {
             return res.json();
         })
@@ -169,7 +169,7 @@ export class DataService {
         const params: URLSearchParams = new URLSearchParams();
         params.set('test_id', searchCriteria);
 
-        return this.http.get('http://localhost:3002/getScores', { search: params }).map((res: any) => {
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3002/getScores', { search: params }).map((res: any) => {
             return res.json();
         }).catch((error: any) => {
             return Observable.throw(error.json ? error.json().error : error || 'Server error');

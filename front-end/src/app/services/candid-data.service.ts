@@ -17,7 +17,7 @@ export class CandidDataService {
         const params: URLSearchParams = new URLSearchParams();
         params.set('_id', searchCriteria);
 
-        return this.http.get('http://localhost:3001', { search: params })
+        return this.http.get('http://' + window.location.host.split(':')[0] + ':3001', { search: params })
                 .map((res: any) => {
                     return res.json();
                 })
@@ -28,7 +28,7 @@ export class CandidDataService {
 
     // Insert a new candidate
     insertNewCandidate(candid: Candidate): Observable<any> {
-        return this.http.post('http://localhost:3001/newCandidate', candid)
+        return this.http.post('http://' + window.location.host.split(':')[0] + ':3001/newCandidate', candid)
             .map((res: any) => {
                 return res.json();
             })

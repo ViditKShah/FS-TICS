@@ -1,8 +1,7 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-  <!-- Brand/logo -->
-  <a class="navbar-brand" [routerLink]="['/dashboard']">TICS</a>
-  
-  <!-- Links -->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">  
+  <ul class="nav navbar-nav mr-auto">
+    <a class="navbar-brand" [routerLink]="['/dashboard']">TICS</a>
+  </ul>
   <ul class="nav navbar-nav">
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/dashboard']">Home</a>
@@ -16,10 +15,11 @@
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['/review']">Review</a>
     </li>
-    <li class="nav-item" style="position:fixed;right:5%">
-      <span class="nav-link">Welcome {{recruiterName}}</span>
+    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link cursorp" data-toggle="dropdown">Welcome {{recruiterName}}<span class="caret"></span></a>
+      <ul class="bg-dark dropdown-menu lg">
+        <li class="nav-item cursorp" (click) = logOut()><span class="nav-link">Logout</span></li>
+      </ul>
     </li>
-    <li class="nav-item" style="position:fixed;right:1%; cursor:pointer;" (click) = logOut()><span class="nav-link">Logout</span></li>
   </ul>
 </nav>
 
