@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     data: { title: 'Review' }
   },
   {
-    path: 'dashboard/:name',
+    path: 'dashboard/:name/:id',
     component: DashboardComponent,
     data: { title: 'Dashboard' }
   },

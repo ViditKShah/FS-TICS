@@ -13,39 +13,38 @@ import { Router } from '@angular/router';
 })
 
 export class ReviewComponent implements OnInit {
-  
   newTest: Test;
   allTests: Test[];
   ifTest: boolean;
-  selectedTest = "Click to select";
+  selectedTest = 'Click to select';
   newScore: Scores;
-  allScores: Scores[]
+  allScores: Scores[];
 
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-  	this.newTest = Test.CreateDefault();
+    this.newTest = Test.CreateDefault();
     this.newScore = Scores.CreateDefault();
-  	this.fetchTestID();
-    this.selectedTest = "Click to select";
+    this.fetchTestID();
+    this.selectedTest = 'Click to select';
   }
 
-  fetchTestID() {	
-  	this.dataService.getTestDetails("", "viewTests")  // <-- ID of the Test
+  fetchTestID() {
+    this.dataService.getTestDetails('', 'viewTests')  // <-- ID of the Test
     .subscribe(
       data => {
           this.allTests = [];
           data.forEach(
            element => {
-             var a = new Test(element._id, 
+             const a = new Test(element._id,
                               element.recruiter_id,
                               element.designation,
-                              element.question_IDs, 
+                              element.question_IDs,
                               element.skills);
              this.newTest = a;
              this.allTests.push(this.newTest);
              this.newTest = Test.CreateDefault();
-           })
+           });
       });
   }
 
@@ -55,15 +54,15 @@ export class ReviewComponent implements OnInit {
         data => {
            this.allScores = [];
            data.forEach(element => {
-             var a = new Scores(element._id,
+             const a = new Scores(element._id,
                                element.candid_id,
                                element.test_id,
                                element.score);
              this.newScore = a;
              this.allScores.push(this.newScore);
              this.newScore = Scores.CreateDefault();
-           })
-        })
+           });
+        });
   }
 
 
