@@ -1,2 +1,2 @@
 # FS_TICS
-A central repository for Ful Stack Team 4
+A central repository for Full Stack Team 4
