@@ -20,6 +20,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CandidLoginComponent } from './candid-login/candid-login.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const appRoutes: Routes = [
   {
@@ -48,9 +49,9 @@ const appRoutes: Routes = [
     data: { title: 'Review' }
   },
   {
-    path: 'dashboard/:name/:id',
-    component: DashboardComponent,
-    data: { title: 'Dashboard' }
+    path: 'tics/:id/:name',
+    component: NavbarComponent,
+    data: { title: 'TICS' }
   },
   {
     path: 'dashboard',
@@ -68,8 +69,8 @@ const appRoutes: Routes = [
     data: { title: 'Submit Test' }
   },
   { path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
+    component: RecruiterLoginComponent,
+    data: { title: 'Login' }
   }
 
 ];
@@ -78,6 +79,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
     QuestionsComponent,
     TestComponent,
     ReviewComponent,

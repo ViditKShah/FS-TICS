@@ -191,7 +191,7 @@ app.post('/auth/openid/return',
     log.info('Login post');
     var domain = req.headers.host.split(':');
     var host = domain[0];
-    res.redirect('http://' + host + ':4200/dashboard/' + (req.user.displayName) + '/' + (req.user.oid));
+    res.redirect('http://' + host + ':4200/tics/' + req.user.oid + '/' + req.user.displayName);
   });
 
 // 'logout' route, logout from passport, and destroy the session with AAD.

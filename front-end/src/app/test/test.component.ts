@@ -39,7 +39,7 @@ export class TestComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-
+    history.pushState({}, '', '/test');
   	this.newQues = Questions.CreateDefault();
     this.newQues.question_category = "Select category";
   	this.generalCriteria = "general";

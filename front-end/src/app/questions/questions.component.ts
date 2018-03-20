@@ -19,6 +19,7 @@ export class QuestionsComponent implements OnInit {
   constructor(private dataService: DataService ) { }
 
   ngOnInit() {
+    history.pushState({}, '', '/questions');
   	this.newQues = Questions.CreateDefault();
   	this.searchCriteria = "";
   	this.no_of_answers = 0;
