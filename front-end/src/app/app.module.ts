@@ -21,6 +21,7 @@ import { CandidLoginComponent } from './candid-login/candid-login.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {
@@ -50,7 +51,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'tics/:id/:name',
-    component: NavbarComponent,
+    component: HomeComponent,
     data: { title: 'TICS' }
   },
   {
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
     ThankYouComponent,
     CandidLoginComponent,
     InstructionsComponent,
-    RecruiterLoginComponent
+    RecruiterLoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
