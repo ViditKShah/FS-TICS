@@ -1,3 +1,7 @@
+Run "npm install" to install all the dependencies before running the application.
+
+Run "npm start" in the command line to start the back end server.
+
 # MeanFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
