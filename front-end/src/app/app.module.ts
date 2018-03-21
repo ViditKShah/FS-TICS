@@ -20,7 +20,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { CandidLoginComponent } from './candid-login/candid-login.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { RecruiterNavbarComponent } from './recnavbar/recnavbar.component';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
@@ -56,7 +56,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    component: HomeComponent,
     data: { title: 'Dashboard' }
   },
   {
@@ -80,7 +80,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    RecruiterNavbarComponent,
     QuestionsComponent,
     TestComponent,
     ReviewComponent,

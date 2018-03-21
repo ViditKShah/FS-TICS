@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+  templateUrl: './recnavbar.component.html',
+  styleUrls: ['./recnavbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class RecruiterNavbarComponent implements OnInit {
   recruiterName: string;
 
   constructor() {
