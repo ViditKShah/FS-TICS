@@ -204,6 +204,7 @@ export class SubmitTestComponent implements OnInit {
         this.submitScore.candid_id = candidID;
         this.submitScore.test_id = testID;
         this.submitScore.score = score;
+        this.submitScore.candid_name = this.candidName;
         this.sendCandidScore();
    
       })
