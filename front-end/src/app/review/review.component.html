@@ -23,6 +23,7 @@
       				<tr>
         				<th>Index</th>
         				<th>Candidate ID</th>
+                        <th>Candidate Name</th>
         				<th>Score</th>
       				</tr>
     			</thead>
@@ -30,6 +31,7 @@
       				<tr *ngFor="let score of allScores; let i = index">
         				<td>{{i+1}}</td>
         				<td>{{score.candid_id}}</td>
+                        <td>{{score.candid_name}}</td>
         				<td>{{score.score}}</td>
         			</tr>
         		</tbody>

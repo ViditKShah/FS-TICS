@@ -57,6 +57,7 @@ export class ReviewComponent implements OnInit {
            data.forEach(element => {
              const a = new Scores(element._id,
                                element.candid_id,
+                               element.candid_name,
                                element.test_id,
                                element.score);
              this.newScore = a;

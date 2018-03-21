@@ -3,7 +3,8 @@ var Schema = mongoose.Schema;
 
 // Define a schema.
 var scoreSchema = new Schema({
-  candid_id: String ,
+  candid_id: String,
+  candid_name: String,
   test_id: String,	
   question_id: String,
   score: String
