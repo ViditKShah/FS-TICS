@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +23,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
 import { RecruiterNavbarComponent } from './recnavbar/recnavbar.component';
 import { HomeComponent } from './home/home.component';
+import { ToasterService, ToasterModule } from 'angular2-toaster';
 
 const appRoutes: Routes = [
   {
@@ -97,7 +99,9 @@ const appRoutes: Routes = [
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     TabsModule.forRoot(),
+    ToasterModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
         // <-- debugging purposes only
@@ -106,7 +110,8 @@ const appRoutes: Routes = [
   providers: [
     {provide: BrowserXhr, useClass: Cors}, // <--------- For Cross Origin Access
     DataService,    // <----- Data Service
-    CandidDataService
+    CandidDataService,
+    ToasterService
   ],
   bootstrap: [AppComponent]
 })

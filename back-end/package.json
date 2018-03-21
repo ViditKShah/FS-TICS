@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/authentication & nodemon ./bin/candidate & nodemon ./bin/recruiter"
+    "start": "nodemon ./bin/authentication | nodemon ./bin/recruiter | nodemon ./bin/candidate"
   },
   "dependencies": {
     "assert-plus": "^1.0.0",
     "body-parser": "^1.18.2",
     "bunyan": "^1.8.12",
+    "concurrently": "^3.5.1",
     "connect": "^3.6.6",
     "connect-mongo": "^1.3.2",
     "cookie-parser": "^1.4.3",

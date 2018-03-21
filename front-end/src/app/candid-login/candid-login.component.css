@@ -40,3 +40,7 @@
 .has-error input{
 	border:1px solid red;
 }
+
+.has-error select{
+	border:1px solid red;
+}

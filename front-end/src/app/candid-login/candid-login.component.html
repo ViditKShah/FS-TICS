@@ -1,3 +1,4 @@
+<toaster-container></toaster-container>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10" style="margin-top: 10%; margin-left: 7%; margin-right: 7%;">
@@ -14,19 +15,18 @@
 					<div class="col-md-6">
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['usr'].valid && complexForm.controls['usr'].touched}">
   							<label for="usr" class="input-labels">Full Name</label>
-							  <input type="text" [(ngModel)]="newCandidate.candid_name" class="form-control" id="usr" name="usr" required [formControl]="complexForm.controls['usr']">
-							  <div *ngIf="complexForm.controls['usr'].hasError('required') && complexForm.controls['usr'].touched" class="alert alert-danger">Please enter your name.</div>
+							  <input type="text" pattern="[a-zA-Z\s]+" [(ngModel)]="newCandidate.candid_name" class="form-control" id="usr" name="usr" required [formControl]="complexForm.controls['usr']">
+							  <div *ngIf="!complexForm.controls['usr'].valid && complexForm.controls['usr'].touched" class="alert alert-danger">Please enter a valid name.</div>
 						</div>
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['contact'].valid && complexForm.controls['contact'].touched}">
   							<label for="contact" class="input-labels">Contact No</label>
-							  <input type="tel" maxlength="10" [(ngModel)]="newCandidate.candid_phone" class="form-control" id="contact" name="contact" required [formControl]="complexForm.controls['contact']">
-							  <div *ngIf="complexForm.controls['contact'].hasError('required') && complexForm.controls['contact'].touched" class="alert alert-danger">Please enter your contact number.</div>
-							  <div *ngIf="complexForm.controls['contact'].hasError('maxlength') && complexForm.controls['contact'].touched" class="alert alert-danger">Contact number cannot exceed 10 characters.</div>
+							  <input type="number" min="0" max="10" [(ngModel)]="newCandidate.candid_phone" class="form-control" id="contact" name="contact" required [formControl]="complexForm.controls['contact']">
+							  <div *ngIf="complexForm.controls['contact'].hasError('required') && complexForm.controls['contact'].touched" class="alert alert-danger">Please enter a valid number.</div>
+							  <div *ngIf="complexForm.controls['contact'].hasError('pattern') " class="alert alert-danger">Contact number should have valid 10 digits.</div>
 						</div>
-						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['exp'].valid && complexForm.controls['exp'].touched}">
+						<div class="form-group">
   							<label for="exp" class="input-labels">No. of Experience</label>
 							  <input type="number" min="0" [(ngModel)]="newCandidate.no_of_exp" class="form-control" id="exp" placeholder="In years" name="exp" required [formControl]="complexForm.controls['exp']">
-							  <div *ngIf="complexForm.controls['exp'].hasError('required') && complexForm.controls['exp'].touched" class="alert alert-danger">Please enter the years of experience.</div>
 						</div>
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['selectGender'].valid && complexForm.controls['selectGender'].touched}">
   							<label for="gender" class="input-labels">Gender</label>
@@ -36,26 +36,26 @@
   									{{gender}}
   								</option>
 							  </select>
-							  <div *ngIf="complexForm.controls['selectGender'].hasError('required') && complexForm.controls['selectGender'].touched" class="alert alert-danger">Please select your gender.</div>
+							  <div *ngIf="complexForm.controls['selectGender'].hasError('pattern') && complexForm.controls['selectGender'].touched" class="alert alert-danger">Please select your gender.</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
   							<label for="email" class="input-labels">Email</label>
 							  <input type="text" [(ngModel)]="newCandidate.candid_email" class="form-control" id="email" name="email" required [formControl]="complexForm.controls['email']">
-							  <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="alert alert-danger">Please enter your email id.</div>
+							  <div *ngIf="complexForm.controls['email'].hasError('email') && complexForm.controls['email'].touched" class="alert alert-danger">Please enter a valid email id.</div>
 						</div>
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['alt'].valid && complexForm.controls['alt'].touched}">
   							<label for="alt" class="input-labels">Alternate No</label>
-  							<input type="tel" maxlength="10" [(ngModel)]="newCandidate.candid_phone2" class="form-control" id="alt"
+  							<input type="number" min="0" max="10" [(ngModel)]="newCandidate.candid_phone2" class="form-control" id="alt"
 							  name="alt" required [formControl]="complexForm.controls['alt']">
-							  <div *ngIf="complexForm.controls['alt'].hasError('required') && complexForm.controls['alt'].touched" class="alert alert-danger">Please enter another number.</div>
-							  <div *ngIf="complexForm.controls['alt'].hasError('maxlength') && complexForm.controls['alt'].touched" class="alert alert-danger">Contact number cannot exceed 10 characters.</div>
+							  <div *ngIf="complexForm.controls['alt'].hasError('required') && complexForm.controls['alt'].touched" class="alert alert-danger">Please enter a valid number.</div>
+							  <div *ngIf="complexForm.controls['alt'].hasError('pattern') && complexForm.controls['alt'].touched" class="alert alert-danger">Contact number should have valid 10 digits.</div>
 						</div>
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['dob'].valid && complexForm.controls['dob'].touched}">
   							<label for="dob" class="input-labels">Date of Birth</label>
-							  <input type="date" [(ngModel)]="newCandidate.dob" class="form-control" id="dob" name="dob" required [formControl]="complexForm.controls['dob']">
-							  <div *ngIf="complexForm.controls['dob'].hasError('required') && complexForm.controls['dob'].touched" class="alert alert-danger">Please select your date of birth.</div>
+							  <input type="date" [(ngModel)]="newCandidate.dob" class="form-control" id="dob" name="dob" [formControl]="complexForm.controls['dob']">
+							  <div *ngIf="complexForm.controls['dob'].hasError('pattern') && complexForm.controls['dob'].touched" class="alert alert-danger">Please select your date of birth.</div>
 						</div>
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['selectLocation'].valid && complexForm.controls['selectLocation'].touched}">
   							<label for="loc" class="input-labels">Preferred Location</label>
@@ -69,7 +69,8 @@
 						</div>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-primary proceed" (click)="insertCandidate()" [disabled]="!complexForm.valid">
+				<button id="submitButton" type="submit" class="btn btn-primary proceed" (click)="insertCandidate()" >
+					<!-- [disabled]="!complexForm.valid" -->
 				Proceed</button>
 				</form>
 				
