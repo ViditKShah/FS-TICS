@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Questions } from '../model/questions';
 import { Test } from '../model/test';
 import { DataService} from '../services/data.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -36,10 +36,10 @@ export class TestComponent implements OnInit {
   allTests: Test[];
   newTest: Test;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    history.pushState({}, '', '/test');
+    history.pushState({}, '', '/tests');
   	this.newQues = Questions.CreateDefault();
     this.newQues.question_category = "Select category";
   	this.generalCriteria = "general";
@@ -62,8 +62,6 @@ export class TestComponent implements OnInit {
         console.log("Tests deleted!");
       })
   }
-
-
 
   // Fetching all the questions
   getQuestions(){

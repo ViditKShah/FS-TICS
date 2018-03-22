@@ -49,6 +49,7 @@ export class SubmitTestComponent implements OnInit {
   }
 
   ngOnInit() {
+    history.pushState({}, '', '/test');
     this.candid = Candidate.CreateDefault(); 
     this.getCandidName();
 

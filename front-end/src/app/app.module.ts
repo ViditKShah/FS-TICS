@@ -27,7 +27,7 @@ import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
   {
-    path: 'test',
+    path: 'tests',
     component: TestComponent,
     data: { title: 'Create a Test' }
   },
@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     data: { title: 'Dashboard' }
   },
   {
-    path: 'welcome-candid',
+    path: 'welcome-candid/:id',
     component: CandidLoginComponent,
     data: { title: 'Welcome Candidate' }
   },

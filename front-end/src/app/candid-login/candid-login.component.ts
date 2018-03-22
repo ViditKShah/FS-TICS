@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { CandidDataService } from '../services/candid-data.service';
 import { Candidate } from '../model/candidate';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
@@ -17,14 +17,15 @@ export class CandidLoginComponent implements OnInit {
   selectedGender: string;
   selectedLocation: string;
   dob: Date;
-  testID = '5a8a90f7d6c1f4189b2b78f3';
+  testID: string;
   recruiter_id = '110';
   newCandidate: Candidate;
   // tslint:disable-next-line:max-line-length
   reg = '(?:19)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:20)[0-0]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))';
 
   constructor(private candidData: CandidDataService, private router: Router, fb: FormBuilder,
-    public toastr: ToastsManager, vcr: ViewContainerRef) {
+    public toastr: ToastsManager, vcr: ViewContainerRef, private route: ActivatedRoute) {
+    this.route.params.subscribe( params => this.testID = params.id);
     this.toastr.setRootViewContainerRef(vcr);
     const ageMaxLimitValue = (new Date().getFullYear() - 18).toString()[3];
     const agePattern = this.reg.replace('(?:20)[0-0]{2}', '(?:20)[0-' + ageMaxLimitValue + ']{2}');
@@ -41,6 +42,7 @@ export class CandidLoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    history.pushState({}, '', '/welcome');
     this.selectedGender = 'Click to select';
     this.selectedLocation = 'Bangalore';
     this.newCandidate = Candidate.CreateDefault();
