@@ -6,7 +6,6 @@ var scoreSchema = new Schema({
   candid_id: String,
   candid_name: String,
   test_id: String,	
-  question_id: String,
   score: String
 }, {
     versionKey: false // To not generate __v key

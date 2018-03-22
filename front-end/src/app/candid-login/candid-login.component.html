@@ -19,7 +19,7 @@
 						</div>
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['contact'].valid && complexForm.controls['contact'].touched}">
   							<label for="contact" class="input-labels">Contact No</label>
-							  <input type="number" min="0" max="10" [(ngModel)]="newCandidate.candid_phone" class="form-control" id="contact" name="contact" required [formControl]="complexForm.controls['contact']">
+							  <input type="number" min="0" maxlength="10" [(ngModel)]="newCandidate.candid_phone" class="form-control" id="contact" name="contact" required [formControl]="complexForm.controls['contact']">
 							  <div *ngIf="complexForm.controls['contact'].hasError('required') && complexForm.controls['contact'].touched" class="alert alert-danger">Please enter a valid number.</div>
 							  <div *ngIf="complexForm.controls['contact'].hasError('pattern') && complexForm.controls['contact'].touched " class="alert alert-danger">Contact number should have valid 10 digits.</div>
 						</div>
