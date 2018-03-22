@@ -21,7 +21,7 @@
   							<label for="contact" class="input-labels">Contact No</label>
 							  <input type="number" min="0" max="10" [(ngModel)]="newCandidate.candid_phone" class="form-control" id="contact" name="contact" required [formControl]="complexForm.controls['contact']">
 							  <div *ngIf="complexForm.controls['contact'].hasError('required') && complexForm.controls['contact'].touched" class="alert alert-danger">Please enter a valid number.</div>
-							  <div *ngIf="complexForm.controls['contact'].hasError('pattern') " class="alert alert-danger">Contact number should have valid 10 digits.</div>
+							  <div *ngIf="complexForm.controls['contact'].hasError('pattern') && complexForm.controls['contact'].touched " class="alert alert-danger">Contact number should have valid 10 digits.</div>
 						</div>
 						<div class="form-group">
   							<label for="exp" class="input-labels">No. of Experience</label>
@@ -54,7 +54,7 @@
 						<div class="form-group" [ngClass]="{'has-error':!complexForm.controls['dob'].valid && complexForm.controls['dob'].touched}">
   							<label for="dob" class="input-labels">Date of Birth</label>
 							  <input type="date" [(ngModel)]="newCandidate.dob" class="form-control" id="dob" name="dob" [formControl]="complexForm.controls['dob']">
-							  <div *ngIf="complexForm.controls['dob'].hasError('pattern') && complexForm.controls['dob'].touched" class="alert alert-danger">Please select your date of birth.</div>
+							  <div *ngIf="complexForm.controls['dob'].hasError('pattern') && complexForm.controls['dob'].touched" class="alert alert-danger">You should be atleast 18 years of age.</div>
 						</div>
 						<div class="form-group">
   							<label for="loc" class="input-labels">Preferred Location</label>

@@ -26,13 +26,13 @@ export class CandidLoginComponent implements OnInit {
     this.toastr.setRootViewContainerRef(vcr);
     this.complexForm = fb.group({
       'usr' : [null, Validators.required],
-      'contact': [null, Validators.compose([Validators.required, Validators.pattern('(7|8|9)[1-9]{9}')])],
+      'contact': [null, Validators.compose([Validators.required, Validators.pattern('(7|8|9)[0-9]{9}')])],
       'exp' : [null],
       'selectGender' : [null, Validators.pattern('[A-Za-z]{3}e|[A-Za-z]{5}e')],
       'email' : [null, Validators.email],
-      'alt': [null, Validators.compose([Validators.required, Validators.pattern('(7|8|9)[1-9]{9}')])],
+      'alt': [null, Validators.compose([Validators.required, Validators.pattern('(7|8|9)[0-9]{9}')])],
       // tslint:disable-next-line:max-line-length
-      'dob': [null, Validators.pattern('^(?:(?:10|12|0?[13578])/(?:3[01]|[12][0-9]|0?[1-9])/(?:1[8-9]\\d{2}|[2-9]\\d{3})|(?:11|0?[469])/(?:30|[12][0-9]|0?[1-9])/(?:1[8-9]\\d{2}|[2-9]\\d{3})|0?2/(?:2[0-8]|1[0-9]|0?[1-9])/(?:1[8-9]\\d{2}|[2-9]\\d{3})|0?2/29/[2468][048]00|0?2/29/[3579][26]00|0?2/29/[1][89][0][48]|0?2/29/[2-9][0-9][0][48]|0?2/29/1[89][2468][048]|0?2/29/[2-9][0-9][2468][048]|0?2/29/1[89][13579][26]|0?2/29/[2-9][0-9][13579][26])$')],
+      'dob': [null, Validators.pattern('(?:19)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:20)[0]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))')],
       'selectLocation' : [null]
     });
   }
