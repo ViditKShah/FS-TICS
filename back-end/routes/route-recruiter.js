@@ -121,6 +121,7 @@ router.post('/deleteQues', function(req, res, next) {
       res.send();
     }
 
+    
     console.log("removed!");
     res.send({status: 'ok'});
   });

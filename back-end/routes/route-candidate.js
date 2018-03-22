@@ -6,18 +6,32 @@ var Candidate = require('../models/candidate');
 
 /* GET all the candidates. */
 router.get('/', function(req, res, next) {
-  var searchQuery = {};
-  searchQuery = { _id: req.query._id };
-
-  Candidate.find(searchQuery, function(err, candidates){
+  if (!req.query._id) {
+    Candidate.find(function(err, candidate){
     if (err) {
       res.status(400);      
       return res.send();
     }
-
+    
     console.log("returning all the candidates.");
-    res.send( candidates );
+    res.send(candidate);
   })
+  }
+  else{
+     var searchQuery = { _id: req.query._id };
+     Candidate.find(searchQuery, function(err, candidate){
+    if (err) {
+      res.status(400);      
+      return res.send();
+    }
+    
+    console.log("returning all the candidates.");
+    res.send(candidate);
+  })
+  }
+ 
+  console.log(searchQuery);
+  
 });
 
 
