@@ -20,10 +20,14 @@ export class CandidLoginComponent implements OnInit {
   testID = '5a8a90f7d6c1f4189b2b78f3';
   recruiter_id = '110';
   newCandidate: Candidate;
+  // tslint:disable-next-line:max-line-length
+  reg = '(?:19)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:20)[0-0]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))';
 
   constructor(private candidData: CandidDataService, private router: Router, fb: FormBuilder,
     public toastr: ToastsManager, vcr: ViewContainerRef) {
     this.toastr.setRootViewContainerRef(vcr);
+    const ageMaxLimitValue = (new Date().getFullYear() - 18).toString()[3];
+    const agePattern = this.reg.replace('(?:20)[0-0]{2}', '(?:20)[0-' + ageMaxLimitValue + ']{2}');
     this.complexForm = fb.group({
       'usr' : [null, Validators.required],
       'contact': [null, Validators.compose([Validators.required, Validators.pattern('(7|8|9)[0-9]{9}')])],
@@ -31,8 +35,7 @@ export class CandidLoginComponent implements OnInit {
       'selectGender' : [null, Validators.pattern('[A-Za-z]{3}e|[A-Za-z]{5}e')],
       'email' : [null, Validators.email],
       'alt': [null, Validators.compose([Validators.required, Validators.pattern('(7|8|9)[0-9]{9}')])],
-      // tslint:disable-next-line:max-line-length
-      'dob': [null, Validators.pattern('(?:19)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:20)[0]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))')],
+      'dob': [null, Validators.pattern(agePattern)],
       'selectLocation' : [null]
     });
   }
