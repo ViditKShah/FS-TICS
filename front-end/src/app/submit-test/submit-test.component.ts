@@ -32,7 +32,7 @@ export class SubmitTestComponent implements OnInit {
   getCandidLength = 0;
   candidID : string;
   candidName: string;
-  testID = "5a8a90f7d6c1f4189b2b78f3";
+  testID : string;
 
   newAnswer: Submissions;
   allAnswers: Submissions[];
@@ -73,7 +73,9 @@ export class SubmitTestComponent implements OnInit {
           data.forEach(
            element => {
              var a = element.candid_name;
+             var b = element.test_id;
              this.candidName = a;
+             this.testID = b;
            })
       });
   }
