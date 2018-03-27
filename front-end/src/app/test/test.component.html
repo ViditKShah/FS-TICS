@@ -16,7 +16,7 @@
         				<th>Index</th>
         				<th>Designation</th>
         				<th>Skills</th>
-        				<th>Action</th>
+						<th colspan="2">Actions</th>
       				</tr>
     			</thead>
     			<tbody>
@@ -24,7 +24,8 @@
         				<td>{{i+1}}</td>
         				<td>{{test.designation}}</td>
         				<td>{{test.skills}}</td>
-        				<td><button class="btn btn-danger" (click)="deleteTest(test)">Delete</button></td>
+						<td><button class="btn btn-danger" (click)="deleteTest(test)">Delete</button></td>
+						<td><a class="btn btn-warning" (click)="shareTest(test, i)" id = "link,i">Share</a></td>
       				</tr>
       			</tbody>
       		</table>		

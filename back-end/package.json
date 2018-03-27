@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/authentication | nodemon ./bin/recruiter | nodemon ./bin/candidate"
+    "start": "node ./bin/authentication | node ./bin/recruiter | node ./bin/candidate",
+    "test": "nyc mocha --recursive **/test_team/*.js"
   },
   "dependencies": {
     "assert-plus": "^1.0.0",
@@ -26,10 +27,17 @@
     "mongoose-unique-validator": "^2.0.0",
     "morgan": "^1.9.0",
     "nodemon": "^1.17.2",
+    "nyc": "^11.6.0",
     "passport": "^0.4.0",
     "passport-azure-ad": "^3.0.10",
     "passport-ldapauth": "^2.0.0",
     "restify": "^6.3.4",
     "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "mocha": "^5.0.4",
+    "should": "^13.2.1"
   }
 }

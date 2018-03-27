@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Questions } from '../model/questions';
 import { Test } from '../model/test';
 import { DataService} from '../services/data.service';
-
+import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-test',
@@ -36,10 +37,12 @@ export class TestComponent implements OnInit {
   allTests: Test[];
   newTest: Test;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router, public toastr: ToastsManager, vcr: ViewContainerRef) { 
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
-    history.pushState({}, '', '/test');
+    history.pushState({}, '', '/tests');
   	this.newQues = Questions.CreateDefault();
     this.newQues.question_category = "Select category";
   	this.generalCriteria = "general";
@@ -63,10 +66,26 @@ export class TestComponent implements OnInit {
       })
   }
 
-
+  // Share a test
+  shareTest(test: Test, index) {
+    const textarea = document.createElement('textarea');
+    const url = location.host.split(':');
+    const domain = url[0];
+    textarea.textContent = 'http://' + domain + ':4200/welcome-candid/' + test._id;
+    document.body.appendChild(textarea);
+    const selection = getSelection();
+    const range = document.createRange();
+    range.selectNode(textarea);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('Copy');
+    this.toastr.success('Link Copied!');
+    selection.removeAllRanges();
+    document.body.removeChild(textarea);
+  }
 
   // Fetching all the questions
-  getQuestions(){
+  getQuestions() {
 
   	this.dataService.getQuestions("", "fromCreateTest")
     .subscribe(

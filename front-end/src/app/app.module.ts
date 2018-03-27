@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -23,11 +24,10 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
 import { RecruiterNavbarComponent } from './recnavbar/recnavbar.component';
 import { HomeComponent } from './home/home.component';
-import { ToasterService, ToasterModule } from 'angular2-toaster';
 
 const appRoutes: Routes = [
   {
-    path: 'test',
+    path: 'tests',
     component: TestComponent,
     data: { title: 'Create a Test' }
   },
@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     data: { title: 'Dashboard' }
   },
   {
-    path: 'welcome-candid',
+    path: 'welcome-candid/:id',
     component: CandidLoginComponent,
     data: { title: 'Welcome Candidate' }
   },
@@ -101,17 +101,16 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     TabsModule.forRoot(),
-    ToasterModule.forRoot(),
+    ToastModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
         // <-- debugging purposes only
     )
   ],
   providers: [
-    {provide: BrowserXhr, useClass: Cors}, // <--------- For Cross Origin Access
-    DataService,    // <----- Data Service
-    CandidDataService,
-    ToasterService
+    {provide: BrowserXhr, useClass: Cors},  // For Cross Origin Access
+    DataService,                            // Data Service
+    CandidDataService
   ],
   bootstrap: [AppComponent]
 })
