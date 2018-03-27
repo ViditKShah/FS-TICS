@@ -25,7 +25,7 @@
         				<td>{{test.designation}}</td>
         				<td>{{test.skills}}</td>
 						<td><button class="btn btn-danger" (click)="deleteTest(test)">Delete</button></td>
-						<td><a class="btn btn-warning" [routerLink]="['/welcome-candid',test._id]" target="_blank">Share</a></td>
+						<td><a class="btn btn-warning" (click)="shareTest(test, i)" id = "link,i">Share</a></td>
       				</tr>
       			</tbody>
       		</table>		
