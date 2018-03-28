@@ -23,12 +23,5 @@
     window.onpopstate = function () {
         history.go(1);
     };
-    var clock = new FlipClock($('.timer'), 5, {
-      clockFace: 'HourCounter'
-    });
-    clock.setCountdown(true);
-    $('#startButton').click(function (e) {
-                    clock.start();
-                });
 </script>
 </html>
