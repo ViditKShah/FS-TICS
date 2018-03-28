@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/authentication | node ./bin/recruiter | node ./bin/candidate",
+    "start": "nodemon ./bin/authentication | nodemon ./bin/recruiter | nodemon ./bin/candidate",
     "test": "nyc mocha --recursive **/test_team/*.js"
   },
   "dependencies": {
