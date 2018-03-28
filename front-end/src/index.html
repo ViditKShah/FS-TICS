@@ -9,9 +9,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ng2-toastr@4.1.2/ng2-toastr.css">  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
 </head>
 <body>
   <app-root></app-root>
@@ -21,5 +23,12 @@
     window.onpopstate = function () {
         history.go(1);
     };
+    var clock = new FlipClock($('.timer'), 5, {
+      clockFace: 'HourCounter'
+    });
+    clock.setCountdown(true);
+    $('#startButton').click(function (e) {
+                    clock.start();
+                });
 </script>
 </html>

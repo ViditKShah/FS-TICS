@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ViewEncapsulation } from '@angular/core';
 import { DataService} from '../services/data.service';
 import { CandidDataService } from '../services/candid-data.service';
-
 import { Submissions } from '../model/submissions';
 import { Questions } from '../model/questions';
 import { Test } from '../model/test';
@@ -9,12 +8,11 @@ import { Scores } from '../model/scores';
 import { Candidate } from '../model/candidate';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-submit-test',
   templateUrl: './submit-test.component.html',
-  styleUrls: ['./submit-test.component.css']
+  styleUrls: ['./submit-test.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SubmitTestComponent implements OnInit {
 
@@ -43,15 +41,18 @@ export class SubmitTestComponent implements OnInit {
   total_count : number;
   submitScore: Scores;
 
-  constructor(private dataService: DataService, private candidData: CandidDataService, private router: Router, private route: ActivatedRoute, 
-    ) { 
+  constructor(private dataService: DataService, private candidData: CandidDataService,
+    private router: Router, private route: ActivatedRoute) {
       this.route.params.subscribe( params => this.candidID = params.id);
+      this.route.params.subscribe( params => this.candidName = params.name);
   }
 
   ngOnInit() {
-    history.pushState({}, '', '/test');
-    this.candid = Candidate.CreateDefault(); 
-    this.getCandidName();
+    setTimeout(() => {
+      this.router.navigate(['/thanks']);
+   }, 5000);
+
+    this.candid = Candidate.CreateDefault();
 
   	this.ques = Questions.CreateDefault();
   	this.myQues = [];
@@ -63,25 +64,8 @@ export class SubmitTestComponent implements OnInit {
     
   }
 
-  // Getting the candidate name from the ID passed through the previous route
-  getCandidName() {
-    this.candidData.getCandidates(this.candidID)  // <-- ID of the Test
-    .subscribe(
-      data => {
-        this.candidName = '';
-        console.log(data);
-          data.forEach(
-           element => {
-             var a = element.candid_name;
-             var b = element.test_id;
-             this.candidName = a;
-             this.testID = b;
-           })
-      });
-  }
-
   getTestDetails() {
-  	this.dataService.getTestDetails(this.testID, "takeTest")  // <-- ID of the Test
+  	this.dataService.getTestDetails(this.testID, 'takeTest')  // <-- ID of the Test
     .subscribe(
       data => {
           data.forEach(
@@ -108,7 +92,7 @@ export class SubmitTestComponent implements OnInit {
          	this.allAnswers = [];
     	 	for (var j =  0; j < this.myQues.length; j++) {
 
-  			this.dataService.getQuestions(this.myQues[j], "fromSubmitTest")
+  			this.dataService.getQuestions(this.myQues[j], 'fromSubmitTest')
   			.subscribe(
       		  data => {
          			data.forEach(
@@ -142,7 +126,7 @@ export class SubmitTestComponent implements OnInit {
         		else {
         			this.allAnswers[i].isCorrect = false;
         		}
-        		console.log("Answer logged: ", this.allAnswers[i].answer_given);
+        		console.log('Answer logged: ', this.allAnswers[i].answer_given);
         		break;
         	}
         }
@@ -163,7 +147,7 @@ export class SubmitTestComponent implements OnInit {
 
              this.newAnswer = Submissions.CreateDefault();
              if (this.submitCount == (this.allAnswers.length)) {
-               console.log("completed last one.", this.submitCount);
+               console.log('completed last one.', this.submitCount);
                this.getCandidateData(this.candidID, this.testID);            
              }
       		})         
@@ -203,7 +187,7 @@ export class SubmitTestComponent implements OnInit {
      
         })
 
-        var score = "" + this.correct_count + " / " + this.total_count;
+        var score = '' + this.correct_count + ' / ' + this.total_count;
         this.submitScore.candid_id = candidID;
         this.submitScore.test_id = testID;
         this.submitScore.score = score;
@@ -222,7 +206,7 @@ export class SubmitTestComponent implements OnInit {
             data => {
              this.submitScore._id = data.id;
              this.submitScore = Scores.CreateDefault();
-             console.log("Sent score.");
+             console.log('Sent score.');
       })
   }
 
