@@ -192,6 +192,7 @@ app.post('/auth/openid/return',
     var domain = req.headers.host.split(':');
     var host = domain[0];
     res.redirect('http://' + host + ':4200/tics/' + req.user.oid + '/' + req.user.displayName);
+    console.log(res);
   });
 
 // 'logout' route, logout from passport, and destroy the session with AAD.

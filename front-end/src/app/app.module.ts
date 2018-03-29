@@ -24,6 +24,7 @@ import { InstructionsComponent } from './instructions/instructions.component';
 import { RecruiterLoginComponent } from './recruiter-login/recruiter-login.component';
 import { RecruiterNavbarComponent } from './recnavbar/recnavbar.component';
 import { HomeComponent } from './home/home.component';
+import { CreateTestComponent } from './create-test/create-test.component';
 
 const appRoutes: Routes = [
   {
@@ -76,6 +77,11 @@ const appRoutes: Routes = [
     component: InstructionsComponent,
     data: { title: 'Instructions' }
   },
+  {
+    path: 'createTest',
+    component: CreateTestComponent,
+    data: {title: 'Create New Test' }
+  },
   { path: '',
     component: RecruiterLoginComponent,
     data: { title: 'Login' }
@@ -97,7 +103,8 @@ const appRoutes: Routes = [
     CandidLoginComponent,
     InstructionsComponent,
     RecruiterLoginComponent,
-    HomeComponent
+    HomeComponent,
+    CreateTestComponent
   ],
   imports: [
     BrowserModule,

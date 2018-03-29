@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RecruiterNavbarComponent implements OnInit {
   recruiterName: string;
+  recruiter_id: string;
 
   constructor() {
   }
