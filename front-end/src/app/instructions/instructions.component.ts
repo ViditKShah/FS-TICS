@@ -17,10 +17,10 @@ export class InstructionsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    history.replaceState({}, '', '/instructions');
   }
 
   startTest() {
-    this.router.navigate(['welcome-candid/test/', this.candid_Id + '/', this.candid_Name]);
+    this.router.navigate(['welcome-candid/test/' + this.candid_Id + '/' + this.candid_Name]);
   }
 }

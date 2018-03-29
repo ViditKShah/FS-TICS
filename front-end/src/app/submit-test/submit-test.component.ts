@@ -47,6 +47,7 @@ export class SubmitTestComponent implements OnInit {
   }
 
   ngOnInit() {
+    history.replaceState({}, '', '/test');
     const countDownDate = new Date().setSeconds(new Date().getSeconds() + 10);
     const x = setInterval(function() {
       const now = new Date().getTime();
@@ -59,7 +60,7 @@ export class SubmitTestComponent implements OnInit {
       + minutes + 'm ' + seconds + 's ';
     }, 1000);
     setTimeout(() => {
-      this.router.navigate(['/thanks']);
+      this.sendAnswers();
     }, 10000);
 
     this.candid = Candidate.CreateDefault();
