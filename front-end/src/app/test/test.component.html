@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container-fluid" style="padding-left: 6%; padding-right: 6%; padding-top: 7%;">    		
+<div class="container-fluid" style="padding-left: 6%; padding-right: 6%; padding-top: 5%;">    		
     <div class="row">
     	<div class="col-md-12">
     		<h4>
@@ -13,7 +13,9 @@
       				<tr>
         				<th>Index</th>
         				<th>Designation</th>
-        				<th>Skills</th>
+						<th>Skills</th>
+						<th>Questions</th>
+						<th>Recruiter</th>
 						<th colspan="2">Actions</th>
       				</tr>
     			</thead>
@@ -21,9 +23,31 @@
       				<tr *ngFor="let test of allTests; let i = index">
         				<td>{{i+1}}</td>
         				<td>{{test.designation}}</td>
-        				<td>{{test.skills}}</td>
-						<td><button class="btn btn-danger" (click)="deleteTest(test)">Delete</button></td>
-						<td><a class="btn btn-warning" (click)="shareTest(test, i)" id = "link,i">Share</a></td>
+						<td>{{test.skills}}</td>
+						<td>{{test.question_IDs.length}}</td>
+						<td>{{test.recruiter_id}}</td>
+						<td>
+							<a href="#myModal" class="btn btn-danger" data-toggle="modal">Delete</a>
+							<a class="btn btn-warning" (click)="shareTest(test, i)" id = "link,i">Share</a>
+						</td>
+						<!-- Modal HTML -->
+						<div id="myModal" class="modal fade">
+							<div class="modal-dialog modal-confirm">
+								<div class="modal-content">
+									<div class="modal-header">	
+										<h4 class="modal-title"><span style="text-align:center">Are you sure?</span></h4>
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									</div>
+									<!-- <div class="modal-body">
+										<p>Do you really want to delete this record? <br> This process cannot be undone.</p>
+									</div> -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+										<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteTest(test)">Delete</button>
+									</div>
+								</div>
+							</div>
+						</div> 
       				</tr>
       			</tbody>
       		</table>		

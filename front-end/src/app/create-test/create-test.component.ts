@@ -101,7 +101,7 @@ export class CreateTestComponent implements OnInit {
                                 element.correct_answer,
                                 element.question_type,
                                 element.question_category);
-             if (newQues.question_category == "psychometric") {
+             if (newQues.question_category == "Psychometric") {
                this.psychQues.push(newQues);
              }
              else {
@@ -157,7 +157,10 @@ export class CreateTestComponent implements OnInit {
   		this.skills.push(newItem);
   		console.log(newItem);
   	}
-  	this.newTest.skills = this.skills;
+    this.newTest.skills = this.skills;
+    const name = sessionStorage.getItem('RecruiterName').split(',');
+    const recruiterName = name[1] + ' ' + name[0];
+    this.newTest.recruiter_id = recruiterName;
   	this.newTest.question_IDs = this.ques_IDs;
   	this.dataService
     .createNewTest(this.newTest)
@@ -170,8 +173,7 @@ export class CreateTestComponent implements OnInit {
          console.log("Added test successfully.");
       }
    );
-    window.location.reload();
-  	
+   setTimeout(() => this.router.navigate(['/tests']), 1000);
   }
 
 

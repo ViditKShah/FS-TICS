@@ -23,7 +23,7 @@ export class ReviewComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    history.pushState({}, '', '/review');
+    // history.pushState({}, '', '/review');
     this.newTest = Test.CreateDefault();
     this.newScore = Scores.CreateDefault();
     this.fetchTestID();

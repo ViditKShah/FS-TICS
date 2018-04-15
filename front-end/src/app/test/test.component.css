@@ -33,3 +33,7 @@ input[type="checkbox"] {
 	color: #ababab;
 	cursor: pointer;
 }
+
+tr, td {
+	text-align: center;
+}

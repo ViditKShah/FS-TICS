@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container" style="margin-top: 7%;">
+<div class="container" style="margin-top: 5%;">
 	<div class="row">
 		<div class="col-md-12">
 			<h4>
@@ -12,16 +12,19 @@
 	</div>
 	<div class="row" style="margin-top: 40px;">
 		<div class="col-md-5">
-					<input type="text" name="designation" class="form-control" placeholder="e.g Developer, Senior Developer, etc."
-						[(ngModel)]="this.newTest.designation" [ngModelOptions]="{standalone: true}">
+			<label>Enter the designation</label>
+			<input type="text" name="designation" class="form-control" placeholder="e.g. Developer, Senior Developer, etc."
+				[(ngModel)]="this.newTest.designation" [ngModelOptions]="{standalone: true}">
 		</div>
 		<div class="col-md-5">
-					<div *ngFor="let skill of skills_input; let i = index">
-						<input type="text" class="form-control new-ques-fields" name="skills" id="skills{{i}}"  placeholder="Skills e.g java, .net">
-					</div>
+				<label>Enter the skills</label>
+				<div *ngFor="let skill of skills_input; let i = index">
+					<input type="text" class="form-control new-ques-fields" name="skills" id="skills{{i}}"  placeholder="e.g.  Java, .NET, etc.">
+				</div>
 		</div>
-		<div class="col-md-1">
-			<div class="btn-group new-ques-fields" style="float: right">
+		<div class="col-md-2">
+			<label>Add/ Remove</label><br>
+			<div class="btn-group new-ques-fields">
 						<button class="btn btn-info" (click)="addSkills()">+</button>
 						<button class="btn btn-info" (click)="removeSkills()">-</button>
 			</div>
@@ -39,7 +42,7 @@
 			
 					<div class="checkbox" *ngFor="let question of generalQues; let i = index">
   						<label><input type="checkbox" id="myQues{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="$event.target.checked? logGeneralQuestions(question._id) : false">{{question.question_name}}</label>
-  						<pre>{{log}}</pre>
+  						
 					</div>
 				
 		</div>
@@ -57,7 +60,7 @@
 
 				<input type="text" name="quesName" class="form-control new-ques-fields" placeholder="Type a new question name" [(ngModel)]="this.newQues.question_name" [ngModelOptions]="{standalone: true}"  />
 
-				<input type="text" name="quesType" class="form-control new-ques-fields" placeholder="Single/Multiple" [(ngModel)]="this.newQues.question_type" [ngModelOptions]="{standalone: true}"  />
+				<input type="text" name="quesType" class="form-control new-ques-fields" placeholder="single/multiple" [(ngModel)]="this.newQues.question_type" [ngModelOptions]="{standalone: true}"  />
 
 				<div class="btn-group new-ques-fields">
 					<button class="btn btn-info" (click)="addAnswers()">+</button>
@@ -65,7 +68,7 @@
 				</div>
 
 				<div *ngFor="let item of answer_input; let i = index">
-					<input type="text" class="form-control answer-options new-ques-fields" id="options{{i}}" placeholder="Option e.g yes, no" /> 
+					<input type="text" class="form-control answer-options new-ques-fields" id="options{{i}}" placeholder="Option e.g. yes, no" /> 
 				</div>
 
 				<input type="text" name="correctAns" class="form-control new-ques-fields" placeholder="Correct Answer" [(ngModel)]="this.newQues.correct_answer" [ngModelOptions]="{standalone: true}" />
@@ -77,10 +80,10 @@
     						Select category
     					</option>
         				<option>
-        					general
-        				</option>
+        					General
+						</option>
         				<option>
-        					psychometric
+        					Psychometric
         				</option>
     				</select>
 				</div>

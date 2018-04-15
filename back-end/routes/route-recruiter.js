@@ -215,7 +215,7 @@ router.post('/submitScore', function(req, res, next) {
 // Get scores for the specific test
 router.get('/getScores', function(req, res, next) {
   var searchQuery = '';
-  searchQuery = { test_id: req.query.test_id };
+  searchQuery = { test_id: req.query.search };
   Scores.find(searchQuery, function(err, scores){
     if (err) {
       res.status(400);      
