@@ -157,6 +157,7 @@ app.use(express.static(__dirname + '/../../public'));
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
+  console.log()
 };
 
 app.get('/login',
@@ -191,8 +192,9 @@ app.post('/auth/openid/return',
     log.info('Login post');
     var domain = req.headers.host.split(':');
     var host = domain[0];
+    // console.log(req);
     res.redirect('http://' + host + ':4200/tics/' + req.user.oid + '/' + req.user.displayName);
-    console.log(res);
+    console.log(req);
   });
 
 // 'logout' route, logout from passport, and destroy the session with AAD.
@@ -200,6 +202,7 @@ app.get('/logout', function(req, res){
   req.session.destroy(function(err) {
     req.logOut();
     res.redirect(config.destroySessionUrl);
+    console.log("---------------------------------------------------------------");
   });
 });
 

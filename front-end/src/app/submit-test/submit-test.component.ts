@@ -61,7 +61,7 @@ export class SubmitTestComponent implements OnInit {
     }, 1000);
     setTimeout(() => {
       this.sendAnswers();
-    }, 10000);
+    }, 20000);
 
     this.candid = Candidate.CreateDefault();
   	this.ques = Questions.CreateDefault();
