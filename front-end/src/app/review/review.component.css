@@ -12,3 +12,7 @@
 	background-color: #dcdcdc; 
 	padding-top: 15px;
 }
+
+tr, td {
+	text-align: center;
+}
