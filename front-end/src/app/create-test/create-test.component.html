@@ -41,7 +41,7 @@
 			<p>General</p>
 			
 					<div class="checkbox" *ngFor="let question of generalQues; let i = index">
-  						<label><input type="checkbox" id="myQues{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="$event.target.checked? logGeneralQuestions(question._id) : false">{{question.question_name}}</label>
+  						<label><input type="checkbox" id="myQues{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="logGeneralQuestions(question._id)">{{question.question_name}}</label>
   						
 					</div>
 				
@@ -49,8 +49,9 @@
 		<div class="col-md-4">
 				<p>Psychometric</p>
 				
-					<div class="checkbox" *ngFor="let question of psychQues">
-  						<label><input type="checkbox" id="myQues2{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="$event.target.checked? logPsychQuestions(question._id) : false">{{question.question_name}}</label>
+					<div class="checkbox" *ngFor="let question of psychQues; let i = index">
+						<!-- $event.target.checked? logPsychQuestions(question._id) : false -->
+  						<label><input type="checkbox" id="myQues2{{i}}" [(ngModel)]="question.checked"  value="{{question._id}}" (change)="logPsychQuestions(question._id)">{{question.question_name}}</label>
 
 					</div>
 				

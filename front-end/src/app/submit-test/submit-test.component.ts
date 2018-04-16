@@ -44,11 +44,12 @@ export class SubmitTestComponent implements OnInit {
     private router: Router, private route: ActivatedRoute) {
       this.route.params.subscribe( params => this.candidID = params.id);
       this.route.params.subscribe( params => this.candidName = params.name);
+      this.route.params.subscribe( params => this.testID = params.testID);
   }
 
   ngOnInit() {
     history.replaceState({}, '', '/test');
-    const countDownDate = new Date().setSeconds(new Date().getSeconds() + 10);
+    const countDownDate = new Date().setSeconds(new Date().getSeconds() + 20);
     const x = setInterval(function() {
       const now = new Date().getTime();
       const distance = countDownDate - now;

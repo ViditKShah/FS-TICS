@@ -223,11 +223,20 @@ export class CreateTestComponent implements OnInit {
 
 
   logGeneralQuestions(id): void {
-    // console.log("This is the selected ID: ", id);
-    this.ques_IDs.push(id);
+    if (this.ques_IDs.indexOf(id) !== -1) {
+      const index = this.ques_IDs.indexOf(id);
+      this.ques_IDs.splice(index, 1);
+    } else {
+      this.ques_IDs.push(id);
+    }
   }
   logPsychQuestions(id): void {
-  	this.ques_IDs.push(id);
+    if (this.ques_IDs.indexOf(id) !== -1) {
+      const index = this.ques_IDs.indexOf(id);
+      this.ques_IDs.splice(index, 1);
+    } else {
+      this.ques_IDs.push(id);
+    }
   }
 
 

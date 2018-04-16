@@ -16,10 +16,10 @@
       This test consists of multiple choice questions only.
     </li>
     <li>
-      Each question is a multiple choice question with four answer choices.
+      Each question is a multiple choice question with four answer choices with one or more correct answers.
     </li>
     <li>
-      Answer each question carefully after reading it twice and then choose the ONE best answer.
+      Answer each question carefully after reading it twice and then choose the best answer(s).
     </li>
     <li>
       Try to answer all questions.
@@ -46,7 +46,7 @@
           <input id="agreeCheckbox" type="checkbox" [(ngModel)]="checked" name="checked"> I've read all the instructions and agree to the rules and regulations defined above.</label>
       </div><br><br>
       <div align="center" class="col-md-12">
-        <button name="back" [routerLink]="['/welcome-candid', candid_Id]" type="button" class="col-md-2 btn btn-primary">Back</button>
+        <!-- <button name="back" [routerLink]="['/welcome-candid', candid_Id]" type="button" class="col-md-2 btn btn-primary">Back</button> -->
         <button id="startButton" name="start" (click)="startTest()" type="button" class="col-md-2 btn btn-primary" [disabled]="!checked">Start</button>
       </div>
   </div>

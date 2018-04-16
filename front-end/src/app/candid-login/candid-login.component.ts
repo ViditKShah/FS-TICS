@@ -68,7 +68,7 @@ export class CandidLoginComponent implements OnInit {
            const candidID = this.newCandidate._id;
            const candidName = this.newCandidate.candid_name;
            this.newCandidate = Candidate.CreateDefault();
-           this.router.navigate(['instructions/' + candidID + '/' + candidName]);
+           this.router.navigate(['instructions/' + candidID + '/' + candidName + '/' + this.testID]);
         });
     } else {
       this.toastr.error('Please fill all details and retry.', 'Invalid Submission');

@@ -68,12 +68,12 @@ const appRoutes: Routes = [
     data: { title: 'Welcome Candidate' }
   },
   {
-    path: 'welcome-candid/test/:id/:name',
+    path: 'welcome-candid/test/:id/:name/:testID',
     component: SubmitTestComponent,
     data: { title: 'Submit Test' }
   },
   {
-    path: 'instructions/:id/:name',
+    path: 'instructions/:id/:name/:testID',
     component: InstructionsComponent,
     data: { title: 'Instructions' }
   },

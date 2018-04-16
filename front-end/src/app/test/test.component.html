@@ -27,27 +27,28 @@
 						<td>{{test.question_IDs.length}}</td>
 						<td>{{test.recruiter_id}}</td>
 						<td>
-							<a href="#myModal" class="btn btn-danger" data-toggle="modal">Delete</a>
-							<a class="btn btn-warning" (click)="shareTest(test, i)" id = "link,i">Share</a>
-						</td>
-						<!-- Modal HTML -->
-						<div id="myModal" class="modal fade">
-							<div class="modal-dialog modal-confirm">
-								<div class="modal-content">
-									<div class="modal-header">	
-										<h4 class="modal-title"><span style="text-align:center">Are you sure?</span></h4>
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-									</div>
-									<!-- <div class="modal-body">
-										<p>Do you really want to delete this record? <br> This process cannot be undone.</p>
-									</div> -->
-									<div class="modal-footer">
-										<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-										<button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteTest(test)">Delete</button>
+							<button class="btn btn-danger" (click)="deleteTest(test)">Delete</button>
+							<a class="btn btn-warning" (click)="shareTest(test)">Share</a>
+							<!-- Modal HTML -->
+							<!-- <div id="myModal" class="modal fade">
+								<div class="modal-dialog modal-confirm">
+									<div class="modal-content">
+										<div class="modal-header">	
+											<h4 class="modal-title"><span style="text-align:center">Are you sure?</span></h4>
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										</div>
+										<div class="modal-body">
+											<p>Do you really want to delete this record? <br> This process cannot be undone.</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+											<a type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteTest(test, i)">Delete</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div> 
+							</div>  -->
+						</td>
+						
       				</tr>
       			</tbody>
       		</table>		
